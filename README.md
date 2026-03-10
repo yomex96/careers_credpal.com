@@ -97,7 +97,8 @@ DOCKERHUB_USERNAME → Your DockerHub username
 
 DOCKER_PASSWORD → DockerHub Access Token (NOT your password)
 
-🔒 Key Decisions
+
+## 🔒 Key Decisions
 
 Security:
 
