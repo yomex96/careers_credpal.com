@@ -153,3 +153,13 @@ docker-compose up --build
 DockerHub Repository: https://hub.docker.com/r/yomex96/credpal-app
 
 GitHub Actions: CI/CD workflow file in .github/workflows/ci-cd.yml
+
+
+# Start your App
+
+  docker run --rm \
+  -p 3000:3000 \
+  --name credpal-app \
+  --network credpal-net \
+  -e DATABASE_URL=postgres://postgres:password@db:5432/credpal_db \
+  credpal-service:v1
