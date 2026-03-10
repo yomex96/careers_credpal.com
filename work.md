@@ -1,4 +1,4 @@
-# Docker command
+# Docker command setup way
 
 # Start the Database
 docker run -d \
