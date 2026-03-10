@@ -30,7 +30,7 @@ docker run -it --rm \
   credpal-service:v2
 
 
-  docker compose logs -f
+  docker compose logs -f work
 
 
   docker compose up --build
