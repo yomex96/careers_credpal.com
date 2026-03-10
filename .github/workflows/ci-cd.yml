@@ -38,10 +38,17 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # 6 Build Docker Image
+      # 6 Build Docker Image with two tags
       - name: Build Docker Image
-        run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/credpal-app:latest .
+        run: |
+          docker build \
+          -t ${{ secrets.DOCKERHUB_USERNAME }}/credpal-app:latest \
+          -t ${{ secrets.DOCKERHUB_USERNAME }}/credpal-app:${{ github.sha }} .
 
-      # 7 Push Docker Image
-      - name: Push Docker Image
-        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/credpal-app:latest
+      # 7 Push Docker Images
+      - name: Push Docker Images
+        run: |
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/credpal-app:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/credpal-app:${{ github.sha }}
+
+        
