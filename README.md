@@ -377,7 +377,4 @@ CMD ["node", "index.js"]
 
 This project is proprietary and confidential.
 
-## 👥 Author
-- Abayomi Robert Onawole
-- [yomex96](https://github.com/yomex96)
-- - [Linkedin](https://www.linkedin.com/in/abayomi-robert-onawole/)
+
