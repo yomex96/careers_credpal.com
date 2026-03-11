@@ -327,12 +327,10 @@ CMD ["node", "index.js"]
 - 📊 **Health checks** - `/health` endpoint for container orchestration
 - 📝 **Structured logging** - JSON format logs for easy parsing
 - 🔍 **Request tracking** - Request IDs for traceability
-- 📈 **Metrics endpoint** - Prometheus-compatible metrics
 - 🚦 **Graceful shutdown** - Proper SIGTERM handling
 
 ### Monitoring Endpoints
 - `/health` - Container health (returns 200/500)
-- `/metrics` - Prometheus metrics (if enabled)
 - `/status` - Service information and uptime
 
 ## 💡 Design Decisions
