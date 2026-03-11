@@ -217,6 +217,10 @@ infra/terraform/
 └── backend.tf         # Remote state configuration
 ```
 
+![Architecture Diagram](terraform1.png)
+![Architecture Diagram](terraform2.png)
+![Architecture Diagram](terraform3.png)
+
 ### Infrastructure Components
 
 - **VPC**: Isolated network with public subnets
