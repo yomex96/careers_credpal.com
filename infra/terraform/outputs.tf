@@ -1,47 +1,35 @@
-# VPC ID
+# VPC & Subnet
 output "vpc_id" {
-  description = "The ID of the VPC"
-  value       = aws_vpc.credpal_vpc.id
+  value = module.vpc.vpc_id
 }
 
-# Subnet ID
 output "subnet_id" {
-  description = "The ID of the subnet"
-  value       = aws_subnet.credpal_subnet.id
+  value = module.vpc.subnet_id
 }
 
-# Security Group ID
-output "security_group_id" {
-  description = "The ID of the security group"
-  value       = aws_security_group.credpal_sg.id
+# Security Groups
+output "ec2_security_group_id" {
+  value = module.security_group.ec2_sg_id
 }
 
-# EC2 Instance ID
-output "instance_id" {
-  description = "The ID of the EC2 instance"
-  value       = aws_instance.credpal_server.id
+output "alb_security_group_id" {
+  value = module.security_group.alb_sg_id
 }
 
-# Public IP of EC2 instance
-output "instance_public_ip" {
-  description = "Public IP of the EC2 instance"
-  value       = aws_instance.credpal_server.public_ip
+# Auto Scaling Group
+output "asg_name" {
+  value = module.ec2.asg_name
 }
 
-# AWS Region
-output "region" {
-  description = "AWS region used for deployment"
-  value       = var.region
+output "instance_ids" {
+  value = module.ec2.instance_ids
 }
 
-# Node.js App Port
-output "app_port" {
-  description = "Port on which the Node.js app will run"
-  value       = var.app_port
+output "instance_public_ips" {
+  value = module.ec2.instance_public_ips
 }
 
-# SSH Port
-output "ssh_port" {
-  description = "Port for SSH access to EC2"
-  value       = var.ssh_port
+# ALB
+output "alb_dns_name" {
+  value = module.alb.alb_dns_name
 }

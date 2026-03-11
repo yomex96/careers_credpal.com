@@ -1,56 +1,46 @@
-resource "aws_vpc" "credpal_vpc" {
-  cidr_block = var.vpc_cidr
-
-  tags = {
-    Name = "credpal-vpc"
-  }
+# VPC Module
+module "vpc" {
+  source             = "./modules/vpc"
+  vpc_cidr           = var.vpc_cidr
+  public_subnet_cidr = var.public_subnet_cidr
+  app_name           = var.app_name
 }
 
-resource "aws_subnet" "credpal_subnet" {
-  vpc_id            = aws_vpc.credpal_vpc.id
-  cidr_block        = var.subnet_cidr
-  availability_zone = "${var.region}a"
-
-  tags = {
-    Name = "credpal-subnet"
-  }
+# Security Group Module
+module "security_group" {
+  source   = "./modules/security_group"
+  vpc_id   = module.vpc.vpc_id
+  app_name = var.app_name
 }
 
-resource "aws_security_group" "credpal_sg" {
-  name   = "credpal-security-group"
-  vpc_id = aws_vpc.credpal_vpc.id
 
-  ingress {
-    from_port   = var.ssh_port
-    to_port     = var.ssh_port
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
 
-  ingress {
-    from_port   = var.app_port
-    to_port     = var.app_port
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
+# ALB Module
+module "alb" {
+  source              = "./modules/alb"
+  vpc_id              = module.vpc.vpc_id
+  subnet_id           = module.vpc.subnet_id
+  alb_sg              = module.security_group.alb_sg_id
+  app_name            = var.app_name
+  acm_certificate_arn = var.acm_certificate_arn
 }
 
-resource "aws_instance" "credpal_server" {
-  ami           = "ami-0c02fb55956c7d316" # still hardcoded free tier Ubuntu AMI
-  instance_type = var.instance_type
-
-  subnet_id              = aws_subnet.credpal_subnet.id
-  vpc_security_group_ids = [aws_security_group.credpal_sg.id]
-  key_name               = var.key_name
-
-  tags = {
-    Name = "credpal-devops-server"
-  }
+# EC2 / Auto Scaling Group Module
+module "ec2" {
+  source           = "./modules/ec2"
+  app_name         = var.app_name
+  instance_type    = var.ec2_instance_type
+  subnet_id        = module.vpc.subnet_id
+  ec2_sg           = module.security_group.ec2_sg_id
+  user_data        = <<-EOF
+                      #!/bin/bash
+                      sudo apt update
+                      sudo apt install -y docker.io
+                      sudo systemctl enable docker
+                      sudo systemctl start docker
+                      sudo usermod -aG docker ubuntu
+                      sudo docker pull ${var.dockerhub_username}/credpal-app:latest
+                      sudo docker run -d -p 3000:3000 --name credpal-app ${var.dockerhub_username}/credpal-app:latest
+                      EOF
+  target_group_arn = module.alb.app_tg_arn
 }
