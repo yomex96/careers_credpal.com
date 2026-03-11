@@ -1,12 +1,10 @@
 [![CI Pipeline](https://github.com/yomex96/careers_credpal.com/actions/workflows/ci.yml/badge.svg)](https://github.com/yomex96/careers_credpal.com/actions/workflows/ci.yml)
 
 
-# CredPal Careers Application
+## CredPal Careers Application
 ```markdown
 A production-ready Node.js API service with PostgreSQL database, containerized with Docker and deployed on AWS infrastructure using Infrastructure as Code principles.
-
-[![CI Status](https://github.com/yomex96/careers_credpal.com/workflows/CI/badge.svg)](https://github.com/yomex96/careers_credpal.com/actions)
-[![Docker Pulls](https://img.shields.io/docker/pulls/yomex96/credpal-app)](https://hub.docker.com/r/yomex96/credpal-app)
+```
 
 ## 📋 Table of Contents
 - [Architecture Overview](#architecture-overview)
