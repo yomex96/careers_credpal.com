@@ -364,12 +364,21 @@ CMD ["node", "index.js"]
 - **Remote state locking** prevents concurrent modifications
 - **Automated testing** before any deployment
 
+## This README addresses Part 6 – Documentation:
+
+- How to run the application locally ✅
+- How to access the app ✅
+- How to deploy the application ✅
+- Key decisions for security, CI/CD, and infrastructure ✅
+
 ## 📝 License
 
 This project is proprietary and confidential.
 
 ## 👥 Contributors
 
-- [yomex](https://github.com/yomex96)
+- [yomex96](https://github.com/yomex96)
+- - [Linkedin](https://www.linkedin.com/in/abayomi-robert-onawole/)
+
 
 
