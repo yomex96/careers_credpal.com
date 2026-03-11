@@ -90,7 +90,7 @@ The CredPal Careers application follows modern DevOps practices with a clear sep
    - PostgreSQL database on port 5432
    - Node.js API on port 3000 with hot-reload
   
-![Architecture Diagram](docker-compose.png)
+![Architecture Diagram](docker_compose.png)
 
 4. **Run locally without Docker** (optional)
    ```bash
