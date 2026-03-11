@@ -1,12 +1,8 @@
 [![CI Pipeline](https://github.com/yomex96/careers_credpal.com/actions/workflows/ci.yml/badge.svg)](https://github.com/yomex96/careers_credpal.com/actions/workflows/ci.yml)
 
 
-
-Here's a well-structured, professional README.md for your CredPal Careers Application:
-
-```markdown
 # CredPal Careers Application
-
+```markdown
 A production-ready Node.js API service with PostgreSQL database, containerized with Docker and deployed on AWS infrastructure using Infrastructure as Code principles.
 
 [![CI Status](https://github.com/yomex96/careers_credpal.com/workflows/CI/badge.svg)](https://github.com/yomex96/careers_credpal.com/actions)
@@ -378,19 +374,4 @@ This project is proprietary and confidential.
 
 - [yomex](https://github.com/yomex96)
 
----
 
-For questions or support, please open an issue or contact the DevOps team.
-```
-
-This README provides:
-1. **Clear structure** with table of contents for easy navigation
-2. **Professional formatting** with badges and visual elements
-3. **Comprehensive coverage** from local dev to production
-4. **Practical examples** for API usage and deployment
-5. **Security focus** highlighting best practices
-6. **Design rationale** explaining key decisions
-7. **Visual architecture** diagram
-8. **Detailed infrastructure** documentation
-9. **CI/CD workflow** explanation
-10. **Environment management** strategy
