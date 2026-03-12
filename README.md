@@ -375,6 +375,20 @@ CMD ["node", "index.js"]
 - How to deploy the application ✅
 - Key decisions for security, CI/CD, and infrastructure ✅
 
+##  ✅ Assessment Checklist Coverage
+
+Part 1 – Containerization: Multi-stage Docker build, non-root user, Docker Compose for app + PostgreSQL ✅
+
+Part 2 – CI/CD: GitHub Actions pipeline for push & PR, runs tests, builds Docker image, pushes to registry ✅
+
+Part 3 – Infrastructure as Code: Terraform modules for VPC, EC2, ALB, security groups, HTTPS certificate ✅
+
+Part 4 – Deployment Strategy: Zero-downtime deployment (Auto Scaling Group), manual approval for prod ✅
+
+Part 5 – Security & Observability: Secrets via environment vars, HTTPS at ALB, non-root container, health checks, logging ✅
+
+Part 6 – Documentation: README explains local setup, API access, deployment, and key design decisions ✅
+
 ## 📝 License
 
 This project is proprietary and confidential.
