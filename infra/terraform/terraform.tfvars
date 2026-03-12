@@ -2,7 +2,7 @@
 # Terraform Variables
 # ----------------------
 
-# Your AWS region (optional, default is us-east-1)
+# Your AWS region (optional, default is us-east-2)
 aws_region = "us-east-2"
 
 # CIDR blocks (optional, defaults already in variables.tf)
