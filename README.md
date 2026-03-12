@@ -155,7 +155,7 @@ DockerHub Repository: https://hub.docker.com/r/yomex96/credpal-app
 GitHub Actions: CI/CD workflow file in .github/workflows/ci-cd.yml
 
 
-# Start your App
+# Start your App now
 
   docker run --rm \
   -p 3000:3000 \
