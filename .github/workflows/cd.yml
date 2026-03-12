@@ -3,18 +3,42 @@ name: CD Pipeline
 on:
   push:
     branches:
-      - prod   # Only deploy from prod branch
+      - prod
 
 jobs:
   deploy-prod:
     runs-on: ubuntu-latest
-    environment: production  # ← Manual approval required
+    environment: production
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      # Explicitly set up Node (needed for some actions)
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # Install Terraform
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.6.6
+
+      # Verify Terraform is installed
+      - name: Terraform Version
+        run: terraform version
+
+      # Run terraform commands in infra/terraform
       - name: Terraform Init
         run: terraform init
+        working-directory: infra/terraform
+
+      - name: Terraform Plan
+        run: terraform plan
+        working-directory: infra/terraform
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve
+        run: terraform apply -auto-approve -var="docker_image_tag=${{ github.sha }}"
+        working-directory: infra/terraform

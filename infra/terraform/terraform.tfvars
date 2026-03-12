@@ -2,7 +2,7 @@
 # Terraform Variables
 # ----------------------
 
-# Your AWS region (optional, default is us-east-1)
+# Your AWS region (optional, default is us-east-2)
 aws_region = "us-east-2"
 
 # CIDR blocks (optional, defaults already in variables.tf)
@@ -19,4 +19,4 @@ app_name = "credpal-app"
 dockerhub_username = "yomex96"
 
 # ACM Certificate ARN for HTTPS
-acm_certificate_arn = "arn:aws:acm:us-east-1:123456789012:certificate/abcd1234-efgh-5678-ijkl-9012mnopqrst"
+acm_certificate_arn = "arn:aws:acm:us-east-2:123456789012:certificate/abcd1234-efgh-5678-ijkl-9012mnopqrst"

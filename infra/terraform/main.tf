@@ -32,6 +32,8 @@ module "ec2" {
   instance_type    = var.ec2_instance_type
   subnet_id        = module.vpc.subnet_id
   ec2_sg           = module.security_group.ec2_sg_id
+  
+
   user_data        = <<-EOF
                       #!/bin/bash
                       sudo apt update
@@ -39,8 +41,10 @@ module "ec2" {
                       sudo systemctl enable docker
                       sudo systemctl start docker
                       sudo usermod -aG docker ubuntu
-                      sudo docker pull ${var.dockerhub_username}/credpal-app:latest
-                      sudo docker run -d -p 3000:3000 --name credpal-app ${var.dockerhub_username}/credpal-app:latest
+                      sudo docker pull ${var.dockerhub_username}/credpal-app:${var.docker_image_tag}
+                      sudo docker stop credpal-app || true
+                      sudo docker rm credpal-app || true
+                      sudo docker run -d -p 3000:3000 --name credpal-app ${var.dockerhub_username}/credpal-app:${var.docker_image_tag}
                       EOF
   target_group_arn = module.alb.app_tg_arn
 }
