@@ -19,4 +19,4 @@ app_name = "credpal-app"
 dockerhub_username = "yomex96"
 
 # ACM Certificate ARN for HTTPS
-acm_certificate_arn = "arn:aws:acm:us-east-1:123456789012:certificate/abcd1234-efgh-5678-ijkl-9012mnopqrst"
+acm_certificate_arn = "arn:aws:acm:us-east-2:123456789012:certificate/abcd1234-efgh-5678-ijkl-9012mnopqrst"
