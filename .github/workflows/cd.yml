@@ -3,7 +3,7 @@ name: CD Pipeline
 on:
   push:
     branches:
-      - prod   # Deploy only from prod branch
+      - prod
 
 jobs:
   deploy-prod:
