@@ -32,3 +32,9 @@ variable "dockerhub_username" {
   description = "DockerHub username for pulling app image"
   type        = string
 }
+
+variable "docker_image_tag" {
+  description = "Docker image tag to deploy"
+  type        = string
+  default     = "latest"
+}
