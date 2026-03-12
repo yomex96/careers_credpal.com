@@ -30,4 +30,4 @@ jobs:
         run: terraform plan
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve
+        run: terraform apply -auto-approve -var="docker_image_tag=${{ github.sha }}"
