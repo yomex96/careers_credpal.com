@@ -8,11 +8,7 @@ on:
 jobs:
   deploy-prod:
     runs-on: ubuntu-latest
-    environment: production   # Requires manual approval
-
-    defaults:
-      run:
-        working-directory: infra/terraform
+    environment: production
 
     steps:
       - name: Checkout Repository
@@ -25,9 +21,12 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
+        working-directory: infra/terraform
 
       - name: Terraform Plan
         run: terraform plan
+        working-directory: infra/terraform
 
       - name: Terraform Apply
         run: terraform apply -auto-approve -var="docker_image_tag=${{ github.sha }}"
+        working-directory: infra/terraform
